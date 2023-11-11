@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+    {% if user.is_superuser %}
+    <h1>Painel Gerente</h1>
+    {% else %}
+    <h1>Painel Funcionário</h1>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManageParking</title>
+    <link rel="stylesheet" href="{% static 'css/bas.css' %}">
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    {% if user.is_superuser %}
+    <nav class="menu-lateral">
+        <div class="logo-content">
+            <img src="{% static 'img/logo.svg' %}" alt="logo">
+        </div>
+        <div>
+            <h2>Olá {{request.user}}</h2>
+        </div>
+        <ul>
+            <li>Funcionários</li>
+            <li>Clientes</li>
+            <li>Reservas</li>
+            <li>Vagas</li>
+            <a href="{% url 'logout' %}">
+                <li>Sair</li>
+            </a>
+        </ul>
+    </nav>
+    {% else %}
+    <nav class="menu-lateral">
+        <div class="logo-content">
+            <img src="{% static 'img/logo.svg' %}" alt="logo">
+        </div>
+        <div>
+            <h2>Olá {{request.user}}</h2>
+        </div>
+        <ul>
+            <li>Clientes</li>
+            <li>Reservas</li>
+            <li>Vagas</li>
+            <a href="{% url 'logout' %}">
+                <li>Sair</li>
+            </a>
+        </ul>
+    </nav>
+    {% endif %}
+    {% else %}
+    <nav class="menu-lateral">
+        <div class="logo-content">
+            <img src="{% static 'img/logo.svg' %}" alt="logo">
+        </div>
+    </nav>
+    {% endif %}
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>
