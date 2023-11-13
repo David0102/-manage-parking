@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="login-content">
+    <div class="login-form">
+        <h1>Editar cliente</h1>
+        <form action="{% url 'editar_cliente_post' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" value="{{cliente.id}}" name="cliente_id">
+            <input type="text" value="{{cliente.nome}}" name="nome" placeholder="Nome" required>
+            <input type="text" value="{{cliente.cpf}}" name="cpf" placeholder="CPF(ex: 000.000.000-00)" required>
+            <input type="date" value="{{cliente.data_nascimento|date:'Y-m-d'}}" name="data_nascimento" required>
+            <input type="text" value="{{cliente.telefone}}" name="telefone" placeholder="Telefone(ex: (00)00000-0000)"
+                required>
+            <button type="submit">Editar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

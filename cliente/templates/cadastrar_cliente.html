@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="login-content">
+    <div class="login-form">
+        <h1>Cadastrar cliente</h1>
+        <form action="{% url 'cadastrar_cliente' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="text" name="cpf" placeholder="CPF(ex: 000.000.000-00)" required>
+            <input type="date" name="data_nascimento" required>
+            <input type="text" name="telefone" placeholder="Telefone(ex: (00)00000-0000)" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

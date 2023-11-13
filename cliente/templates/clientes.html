@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="clientes-search">
+    <input type="text" placeholder="Buscar cliente">
+    <a href="#">
+        <i class="bi bi-search"></i>
+    </a>
+</div>
+<div class="clientes-add">
+    <a href="{% url 'cadastrar_cliente' %}">
+        <i class="bi bi-plus"></i>Adcionar
+    </a>
+</div>
+<div class="clientes-card-content">
+    {% for cliente in clientes %}
+    <div class="clientes-card">
+        <h4>{{cliente.nome}}</h4>
+        <p><span>CPF: </span>{{cliente.cpf}}</p>
+        <p><span>Nascimento: </span>{{cliente.data_nascimento|date:"d/m/Y"}}</p>
+        <p><span>Telefone: </span>{{cliente.telefone}}</p>
+        <div class="clientes-card-actions">
+            <a class="reservas" href="">Reservas</a>
+            <a href="{% url 'editar_cliente_get' cliente.id %}"><i class="bi bi-pencil-square edit"></i></a>
+            <a href="{% url 'deletar_cliente' cliente.id %}"><i class="bi bi-trash trash"></i></a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

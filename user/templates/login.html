@@ -1,14 +1,30 @@
-{% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
-<div>
-    <h1>Login</h1>
-    <form action="{% url 'login' %}" method="POST">
-        {% csrf_token %}
-        <input type="text" name="usuario">
-        <input type="password" name="senha">
-        <button type="submit">Entrar</button>
-    </form>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/user/login_user.css' %}">
+    <title>ManageParking</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="{% static 'img/logo.svg' %}" alt="logo">
+    </div>
+    <div class="login-content">
+        <div class="login-form">
+            <h1>Entrar</h1>
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Usuário" required>
+                <input type="password" name="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
