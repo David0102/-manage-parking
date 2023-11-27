@@ -8,12 +8,12 @@ from django.contrib.auth.decorators import login_required
 class ClienteListView(LoginRequiredMixin, ListView):
     model = Cliente
     context_object_name = 'clientes'
-    template_name = 'clientes.html'
+    template_name = 'cliente/clientes.html'
 
 @login_required
 def cadastrar_cliente(request):
     if request.method == 'GET':
-        return render(request, 'cadastrar_cliente.html')
+        return render(request, 'cliente/cadastrar_cliente.html')
 
     if request.method == 'POST':
         nome = request.POST.get('nome')
@@ -42,7 +42,7 @@ def cadastrar_cliente(request):
 @login_required
 def editar_cliente_get(request, pk):
     cliente = Cliente.objects.get(id=pk)
-    return render(request, 'editar_cliente.html', {'cliente': cliente})
+    return render(request, 'cliente/editar_cliente.html', {'cliente': cliente})
 
 
 def editar_cliente_post(request):
@@ -71,6 +71,6 @@ def editar_cliente_post(request):
 
 class ClienteDeleteView(LoginRequiredMixin, DeleteView):
     model = Cliente
-    template_name = 'deletar_cliente.html'
+    template_name = 'cliente/deletar_cliente.html'
     context_object_name = 'cliente'
     success_url = reverse_lazy('clientes')

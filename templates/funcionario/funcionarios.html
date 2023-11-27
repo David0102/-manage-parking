@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="clientes-search">
+    <input type="text" placeholder="Buscar funcionario">
+    <a href="#">
+        <i class="bi bi-search"></i>
+    </a>
+</div>
+<div class="clientes-add">
+    <a href="{% url 'cadastrar_funcionario' %}">
+        <i class="bi bi-plus"></i>Adcionar
+    </a>
+</div>
+<div class="clientes-card-content">
+    {% if funcionarios %}
+    {% for funcionario in funcionarios %}
+    <div class="clientes-card">
+        <h4>{{funcionario.first_name}}</h4>
+        <p><span>Usuário: </span>{{funcionario.username}}</p>
+        <p><span>Email: </span>{{funcionario.email}}</p>
+        <div class="clientes-card-actions">
+            <a href="{% url 'editar_funcionario_get' funcionario.id %}"><i class="bi bi-pencil-square edit"></i></a>
+            <a href="{% url 'deletar_funcionario' funcionario.id %}"><i class="bi bi-trash trash"></i></a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h3 class="text-not-client">Não há funcionários cadastrados!</h3>
+    {% endif %}
+</div>
+{% endblock %}

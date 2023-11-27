@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block content %}
-<div class="login-content">
-    <div class="login-form">
-        <h1>Editar cliente</h1>
+<div class="cliente-add-content">
+    <div class="cliente-add-form">
+        <h1>Atualizar cliente</h1>
         <form action="{% url 'editar_cliente_post' %}" method="POST">
             {% csrf_token %}
             <input type="hidden" value="{{cliente.id}}" name="cliente_id">
@@ -13,7 +13,7 @@
             <input type="date" value="{{cliente.data_nascimento|date:'Y-m-d'}}" name="data_nascimento" required>
             <input type="text" value="{{cliente.telefone}}" name="telefone" placeholder="Telefone(ex: (00)00000-0000)"
                 required>
-            <button type="submit">Editar</button>
+            <button type="submit">Atualizar</button>
         </form>
     </div>
 </div>

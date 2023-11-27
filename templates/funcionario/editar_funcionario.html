@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="cliente-add-content">
+    <div class="cliente-add-form">
+        <h1>Atualizar funcionário</h1>
+        <form action="{% url 'editar_funcionario_post' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" value="{{funcionario.id}}" name="funcionario_id">
+            <input type="text" value="{{funcionario.first_name}}" name="nome" placeholder="Nome" required>
+            <input type="text" value="{{funcionario.username}}" name="usuario" placeholder="Usuário" required>
+            <input type="email" value="{{funcionario.email}}" name="email" placeholder="Email" required>
+            <button type="submit">Atualizar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

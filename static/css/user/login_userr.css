@@ -19,11 +19,17 @@
     margin-left: 2em;
 }
 
+.messages-content{
+    background-color: #f0ece2;
+    width: 100%;
+}
+
 .login-content {
     background-color: #f0ece2;
     width: 100%;
     height: 573px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }

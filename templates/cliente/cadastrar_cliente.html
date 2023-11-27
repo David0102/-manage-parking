@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block content %}
-<div class="login-content">
-    <div class="login-form">
+<div class="cliente-add-content">
+    <div class="cliente-add-form">
         <h1>Cadastrar cliente</h1>
         <form action="{% url 'cadastrar_cliente' %}" method="POST">
             {% csrf_token %}

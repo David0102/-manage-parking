@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'America/Sao_paulo'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -128,6 +128,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'painel'
 LOGOUT_REDIRECT_URL = 'login'
+
+#messages
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

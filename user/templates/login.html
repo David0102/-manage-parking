@@ -6,7 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/user/login_user.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user/login_userr.css' %}">
+    <link rel="stylesheet" href="{% static 'css/messages/messages.css' %}">
     <title>ManageParking</title>
 </head>
 
@@ -15,6 +16,19 @@
         <img src="{% static 'img/logo.svg' %}" alt="logo">
     </div>
     <div class="login-content">
+        <div class="messages-content">
+            <ul class="messages">
+                {% for message in messages %}
+                {% if 'success' in message.tags %}
+                <li class="alert-success"><span class="success">Sucesso:</span>{{ message }}</li>
+                {% elif 'error' in message.tags %}
+                <li class="alert-error"><span class="error">Erro:</span>{{ message }}</li>
+                {% else %}
+                <li>{{ message }}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
         <div class="login-form">
             <h1>Entrar</h1>
             <form action="{% url 'login' %}" method="POST">
