@@ -6,8 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/user/login_userr.css' %}">
-    <link rel="stylesheet" href="{% static 'css/messages/messages.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user/loginn_useer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/messages/message.css' %}">
     <title>ManageParking</title>
 </head>
 
@@ -29,14 +29,16 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="login-form">
-            <h1>Entrar</h1>
-            <form action="{% url 'login' %}" method="POST">
-                {% csrf_token %}
-                <input type="text" name="username" placeholder="Usuário" required>
-                <input type="password" name="password" placeholder="Senha" required>
-                <button type="submit">Entrar</button>
-            </form>
+        <div class="login-form-content">
+            <div class="login-form">
+                <h1>Entrar</h1>
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="Usuário" required>
+                    <input type="password" name="password" placeholder="Senha" required>
+                    <button type="submit">Entrar</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>

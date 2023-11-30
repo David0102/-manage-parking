@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect, HttpResponse
-from django.urls import reverse_lazy
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from cliente.models import Cliente
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 class ClienteListView(LoginRequiredMixin, ListView):
     model = Cliente
@@ -22,11 +23,13 @@ def cadastrar_cliente(request):
         telefone = request.POST.get('telefone')
 
         if Cliente.objects.filter(cpf=cpf).exists():
-            return HttpResponse('CPF já está vinculado a um cliente.')
+            messages.error(request, "O CPF já está vinculado a um cliente!")
+            return redirect('cadastrar_cliente')
         
         elif Cliente.objects.filter(telefone=telefone).exists():
-            return HttpResponse('Telefone já está vinculado a um cliente.')
-        
+            messages.error(request, "O telefone já está vinculado a um cliente!")
+            return redirect('cadastrar_cliente')
+            
         else:
             cliente = Cliente(
                 nome = nome,
@@ -36,7 +39,7 @@ def cadastrar_cliente(request):
             )
 
             cliente.save()
-
+            messages.success(request, "Cliente cadastrado com sucesso!")
             return redirect('clientes')
 
 @login_required
@@ -53,10 +56,12 @@ def editar_cliente_post(request):
         telefone = request.POST.get('telefone')
 
         if Cliente.objects.filter(cpf=cpf).exclude(id=cliente_id).exists():
-            return HttpResponse('CPF já está vinculado a um cliente.')
+            messages.error(request, "O CPF já está vinculado a um cliente!")
+            return redirect(reverse('editar_cliente_get', kwargs={'pk':cliente_id}))
         
         elif Cliente.objects.filter(telefone=telefone).exclude(id=cliente_id).exists():
-            return HttpResponse('Telefone já está vinculado a um cliente.')
+            messages.error(request, "O telefone já está vinculado a um cliente!")
+            return redirect(reverse('editar_cliente_get', kwargs={'pk':cliente_id}))
         
         else:
             cliente = Cliente.objects.get(id=cliente_id)
@@ -66,6 +71,7 @@ def editar_cliente_post(request):
             cliente.telefone = telefone
             cliente.save()
 
+            messages.success(request, "Cliente atualizado com sucesso!") 
             return redirect('clientes')
 
 
@@ -74,3 +80,11 @@ class ClienteDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'cliente/deletar_cliente.html'
     context_object_name = 'cliente'
     success_url = reverse_lazy('clientes')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, 'Cliente deletado com sucesso!')
+        return super().delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        messages.success(self.request, 'Cliente deletado com sucesso!')
+        return super().get_success_url()

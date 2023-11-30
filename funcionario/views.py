@@ -1,4 +1,7 @@
-from django.shortcuts import render, redirect, HttpResponse
+from typing import Any
+from django import http
+from django.http.response import HttpResponse
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -64,3 +67,11 @@ class FuncionarioDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'funcionario/deletar_funcionario.html'
     context_object_name = 'funcionario'
     success_url = reverse_lazy('funcionarios')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, 'Funcionário deletado com sucesso!')
+        return super().delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        messages.success(self.request, 'Funcionário deletado com sucesso!')
+        return super().get_success_url()
