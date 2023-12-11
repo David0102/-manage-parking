@@ -1,0 +1,184 @@
+.faturamento-vagas-content{
+    display: flex;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.faturamento{
+    padding: 1em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 51%;
+    height: 150px;
+    border-radius: 7px;
+    background-color: rgb(11, 133, 72);
+}
+
+.valor h1{
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+}
+
+.valor p{
+    margin-top: .5em;
+    color: white;
+}
+
+.faturamento i, .vagas i{
+    opacity: .2;
+    margin-right: .3em;
+    font-size: 105px;
+}
+
+.vagas{
+    padding: 1em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 40%;
+    height: 150px;
+    border-radius: 7px;
+    background-color: rgb(69, 140, 168);
+    margin-left: 1.2em;
+}
+
+.cliente-funcionario-reservas-content{
+    margin-left: 2.3em;
+    margin-top: 1.5em;
+    width: 93%;
+    display: flex;
+    align-items: center;
+    height: 390px;
+}
+
+.cards-painel{
+    width: 319px;
+    height: 100%;
+    background-color: rgb(235, 170, 31);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.space-card{
+    margin-left: 1em;
+}
+
+.total-clientes-func{
+    text-align: center;
+}
+
+.total-clientes-func h1{
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+}
+
+.total-clientes-func p{
+    margin-top: 1em;
+    color: white;
+}
+
+.cards-painel i{
+    font-size: 120px;
+    opacity: .3;
+}
+
+.color-card{
+    background-color: rgb(126, 81, 29);
+}
+
+.card-vagas{
+    padding: 1em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 2em;
+    width: 94%;
+    height: 150px;
+    border-radius: 7px;
+    background-color: rgb(69, 140, 168);
+}
+
+.text-card{
+    margin-left: 1em;
+}
+
+.text-card h1{
+    font-size: 55px;
+    color: white;
+}
+
+.text-card p{
+    color: white;
+    margin-top: .4em;
+}
+
+.card-vagas i{
+    font-size: 110px;
+    opacity: .3;
+}
+
+.cliente-reservas-content{
+    display: flex;
+    width: 94%;
+    margin-left: 2.1em;
+    margin-top: 1.2em;
+    height: 390px;
+}
+
+.card{
+    width: 49%;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.space-card-cliente-func{
+    margin-left: 1.8em;
+}
+
+.color-card-cliente{
+    background-color: rgb(235, 170, 31);
+}
+
+.card-text{
+    margin-top: 2em;
+    text-align: center;
+}
+
+.card-text h1{
+    color: white;
+    font-size: 55px;
+}
+
+.card-text p{
+    color: white;
+    margin-top: .5em;
+}
+
+.card i{
+    font-size: 140px;
+    margin-top: .5em;
+    opacity: .3;
+}
+
+@media (max-width:1100px){
+    .vagas i, .faturamento i, .cards-painel i{
+        display: none;
+    }
+}
+
+@media (max-width:1000px){
+    .valor h1{
+        font-size: 45px;
+    }
+}

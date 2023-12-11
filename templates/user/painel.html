@@ -4,9 +4,69 @@
 {% block content %}
 <div>
     {% if user.is_superuser %}
-    <h1>Painel Gerente</h1>
+    <div class="faturamento-vagas-content">
+        <div class="faturamento">
+            <div class="valor">
+                <h1>150,00</h1>
+                <p>Faturamento do Dia</p>
+            </div>
+            <i class="bi bi-coin"></i>
+        </div>
+        <div class="vagas">
+            <div class="valor">
+                <h1>20</h1>
+                <p>Vagas Diponíveis</p>
+            </div>
+            <i class="bi bi-p-circle-fill"></i>
+        </div>
+    </div>
+    <div class="cliente-funcionario-reservas-content">
+        <div class="cards-painel color-card">
+            <div class="total-clientes-func">
+                <h1>15</h1>
+                <p>Reservas em Andamento</p>
+            </div>
+            <i class="bi bi-card-checklist"></i>
+        </div>
+        <div class="cards-painel space-card">
+            <div class="total-clientes-func">
+                <h1>{{total_clientes}}</h1>
+                <p>Clientes Cadastrados</p>
+            </div>
+            <i class="bi bi-person-circle"></i>
+        </div>
+        <div class="cards-painel space-card">
+            <div class="total-clientes-func">
+                <h1>{{total_funcionarios}}</h1>
+                <p>Funcionários Cadastrados</p>
+            </div>
+            <i class="bi bi-person-badge-fill"></i>
+        </div>
+    </div>
     {% else %}
-    <h1>Painel Funcionário</h1>
+    <div class="card-vagas">
+        <div class="text-card">
+            <h1>20</h1>
+            <p>Vagas Disponíveis</p>
+        </div>
+        <i class="bi bi-p-circle-fill"></i>
+    </div>
+    <div class="cliente-reservas-content">
+        <div class="card color-card">
+            <div class="card-text">
+                <h1>15</h1>
+                <p>Reservas em Andamento</p>
+            </div>
+            <i class="bi bi-card-checklist"></i>
+        </div>
+        <div class="card color-card-cliente space-card-cliente-func">
+            <div class="card-text">
+                <h1>{{total_clientes}}</h1>
+                <p>Clientes Cadastrados</p>
+            </div>
+            <i class="bi bi-person-circle"></i>
+        </div>
+    </div>
     {% endif %}
 </div>
 {% endblock %}

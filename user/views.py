@@ -1,12 +1,11 @@
-from typing import Any
-from django import http
-from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from cliente.models import Cliente
+from django.contrib.auth.models import User
 
 
 class CustomLoginView(LoginView):
@@ -22,7 +21,11 @@ class CustomLoginView(LoginView):
 
 @login_required
 def painel(request):
-    return render(request, 'user/painel.html')
+    clientes = Cliente.objects.all()
+    funcionarios = User.objects.exclude(is_superuser = True)
+    total_funcionarios = len(funcionarios)
+    total_clientes = len(clientes)
+    return render(request, 'user/painel.html', {"total_clientes": total_clientes, "total_funcionarios": total_funcionarios})
 
 class CustomLogoutView(LoginRequiredMixin, LogoutView):
     success_url = reverse_lazy('login')
