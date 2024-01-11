@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="deletar-cliente-content">
+    <div class="mensagem-content">
+        <h1>Confirmar Exclusão</h1>
+        <p>Tem certeza que deseja excluir a reserva?</p>
+        <div class="botoes">
+            <form action="{% url 'deletar_reserva' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="reserva_id" value="{{reserva.id}}">
+                <input type="submit" value="Confirmar Exclusão">
+            </form>
+            <a href="{% url 'reservas' %}">Cancelar</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

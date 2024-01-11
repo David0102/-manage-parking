@@ -1,35 +1,43 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
-{% block content %}
-<div class="clientes-search">
-    <input type="text" placeholder="Buscar cliente">
-    <a href="#">
-        <i class="bi bi-search"></i>
-    </a>
-</div>
-<div class="clientes-add">
-    <a href="{% url 'cadastrar_cliente' %}">
-        <i class="bi bi-plus"></i>Adcionar
-    </a>
-</div>
-<div class="clientes-card-content">
-    {% if clientes %}
-    {% for cliente in clientes %}
-    <div class="clientes-card">
-        <h4>{{cliente.nome}}</h4>
-        <p><span>CPF: </span>{{cliente.cpf}}</p>
-        <p><span>Nascimento: </span>{{cliente.data_nascimento|date:"d/m/Y"}}</p>
-        <p><span>Telefone: </span>{{cliente.telefone}}</p>
-        <div class="clientes-card-actions">
-            <a class="reservas" href="">Reservas</a>
-            <a href="{% url 'editar_cliente_get' cliente.id %}"><i class="bi bi-pencil-square edit"></i></a>
-            <a href="{% url 'deletar_cliente' cliente.id %}"><i class="bi bi-trash trash"></i></a>
-        </div>
+{% block content  %}
+<div class="reservas-fundo">
+    <div class="reservas-actions">
+        <form action="">
+            <input type="text" placeholder="CPF do cliente...">
+            <button type="submit">pesquisar</button>
+        </form>
+        <a href="{% url 'cadastrar_cliente' %}">
+            <button class="btn-reservas-add"><i class="bi bi-plus"></i> Adcionar</button>
+        </a>
     </div>
-    {% endfor %}
-    {% else %}
-    <h3 class="text-not-client">Não há clientes cadastrados!</h3>
-    {% endif %}
+    <div class="reservas-content">
+        {% if clientes %}
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Data de nascimento</th>
+                <th>Telefone</th>
+                <th>Ações</th>
+            </tr>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{cliente.nome}}</td>
+                <td>{{cliente.cpf}}</td>
+                <td>{{cliente.data_nascimento}}</td>
+                <td>{{cliente.telefone}}</td>
+                <td class="actions-clientes">
+                    <a class="clientes-edit-btn" href="{% url 'editar_cliente_get' cliente.id %}"><i class="bi bi-pencil-square edit"></i></a>
+                    <a class="clientes-delete-btn" href="{% url 'deletar_cliente' cliente.id %}"><i class="bi bi-trash trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h3>Não há clientes cadastrados!</h2>
+        {% endif %}
+    </div>
 </div>
-{% endblock %}
+{% endblock  %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content  %}
+<div class="vagas-fundo">
+    <h1>Vagas</h1>
+    <div class="vagas-content">
+        <table>
+            <tr>
+                <th>Número</th>
+                <th>Disponível</th>
+                <th>Cliente</th>
+            </tr>
+            {% for vaga in vagas%}
+            <tr>
+                <td>{{vaga.numero}}</td>
+                {% if vaga.disponivel %}
+                <td><i class="bi bi-check-lg" style="color: green;"></i></td>
+                {% else %}
+                <td><i class="bi bi-x-lg" style="color: red;"></i></td>
+                {% endif %}
+                {% if vaga.cliente is None%}
+                <td>-</td>
+                {% else %}
+                <td>{{vaga.cliente}}</i></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock  %}

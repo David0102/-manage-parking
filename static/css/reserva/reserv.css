@@ -1,0 +1,117 @@
+.reservas-fundo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4em;
+}
+
+.reservas-actions{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.reservas-actions form{
+    width: 65%;
+}
+
+.reservas-actions form input{
+    height: 32px;
+    width: 60%;
+    padding: 0 .3em;
+}
+
+.reservas-actions form button{
+    height: 32px;
+    padding: .2em .4em;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.reservas-actions form input:focus{
+    outline: none;
+}
+
+.reservas-actions form input:focus::placeholder{
+    color: transparent;
+}
+
+.btn-reservas-add{
+    cursor: pointer;
+    padding: .3em .4em;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(96, 182, 96);
+    color: #fff;
+    transition: 0.3s;
+    height: 32px;
+}
+
+.btn-reservas-add:hover{
+    color: black;
+}
+
+.reservas-content{
+    margin-top: 1em;
+    background-color: #fff;
+    width: 95%;
+    border-top: 4px solid #075072;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.reservas-content table{
+    border-collapse: collapse;
+    width: 95%;
+    text-align: center;
+}
+
+.reservas-content table td, th{
+    padding: .5em 0;
+    border: 1px solid #cac9c9;
+}
+
+.icons-reserva-actions{
+    font-size: 21px;
+}
+
+.reservas-content a{
+    text-decoration: none;
+}
+
+.reserva-delete{
+    margin-left: .3em;
+    color: rgb(228, 71, 71);
+}
+
+.btn-finalizar-reserva{
+    color: #fff;
+    padding: .4em .5em;
+    background-color: rgb(89, 147, 235);
+    border-radius: 3px;
+}
+
+.btn-finalizar-reserva:hover{
+    color: black;
+    transition: .3s;
+}
+
+
+.actions-clientes{
+    display: flex;
+    justify-content: space-around;
+}
+
+.actions-clientes a{
+    font-size: 21px;
+}
+
+.clientes-edit-btn{
+    color: blue;
+}
+
+.clientes-delete-btn{
+    color: red;
+}

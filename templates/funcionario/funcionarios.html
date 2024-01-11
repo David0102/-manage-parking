@@ -1,33 +1,41 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
-{% block content %}
-<div class="clientes-search">
-    <input type="text" placeholder="Buscar funcionario">
-    <a href="#">
-        <i class="bi bi-search"></i>
-    </a>
-</div>
-<div class="clientes-add">
-    <a href="{% url 'cadastrar_funcionario' %}">
-        <i class="bi bi-plus"></i>Adcionar
-    </a>
-</div>
-<div class="clientes-card-content">
-    {% if funcionarios %}
-    {% for funcionario in funcionarios %}
-    <div class="clientes-card">
-        <h4>{{funcionario.first_name}}</h4>
-        <p><span>Usuário: </span>{{funcionario.username}}</p>
-        <p><span>Email: </span>{{funcionario.email}}</p>
-        <div class="clientes-card-actions">
-            <a href="{% url 'editar_funcionario_get' funcionario.id %}"><i class="bi bi-pencil-square edit"></i></a>
-            <a href="{% url 'deletar_funcionario' funcionario.id %}"><i class="bi bi-trash trash"></i></a>
-        </div>
+{% block content  %}
+<div class="reservas-fundo">
+    <div class="reservas-actions">
+        <form action="">
+            <input type="text" placeholder="Nome de usuário do funcionário...">
+            <button type="submit">pesquisar</button>
+        </form>
+        <a href="{% url 'cadastrar_funcionario' %}">
+            <button class="btn-reservas-add"><i class="bi bi-plus"></i> Adcionar</button>
+        </a>
     </div>
-    {% endfor %}
-    {% else %}
-    <h3 class="text-not-client">Não há funcionários cadastrados!</h3>
-    {% endif %}
+    <div class="reservas-content">
+        {% if funcionarios %}
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Usuáro</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+            {% for funcionario in funcionarios %}
+            <tr>
+                <td>{{funcionario.first_name}}</td>
+                <td>{{funcionario.username}}</td>
+                <td>{{funcionario.email}}</td>
+                <td class="actions-clientes">
+                    <a class="clientes-edit-btn" href="{% url 'editar_funcionario_get' funcionario.id %}"><i class="bi bi-pencil-square edit"></i></a>
+                    <a class="clientes-delete-btn" href="{% url 'deletar_funcionario' funcionario.id %}"><i class="bi bi-trash trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h3>Não há funcionários cadastrados!</h2>
+        {% endif %}
+    </div>
 </div>
-{% endblock %}
+{% endblock  %}

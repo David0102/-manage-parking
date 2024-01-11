@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ManageParking</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{% static 'css/base/basee.css' %}">
-    <link rel="stylesheet" href="{% static 'css/cliente/clientee.css' %}">
-    <link rel="stylesheet" href="{% static 'css/cliente/deletar_cliente.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cliente/deletar_clientee.css' %}">
     <link rel="stylesheet" href="{% static 'css/user/loginn_useer.css' %}">
     <link rel="stylesheet" href="{% static 'css/messages/message.css' %}">
     <link rel="stylesheet" href="{% static 'css/user/paineel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vaga/vagaa.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reserva/reserv.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reserva/cadastroo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cliente/clientee.css' %}">
 </head>
 
 <body>
@@ -50,13 +53,13 @@
                     <p>Faturamentos</p>
                 </li>
             </a>
-            <a href="#">
+            <a href="{% url 'reservas' %}">
                 <li>
                     <span><i class="bi bi-card-checklist"></i></span>
                     <p>Reservas</p>
                 </li>
             </a>
-            <a href="#">
+            <a href="{% url 'vagas' %}">
                 <li>
                     <span><i class="bi bi-search"></i></span>
                     <p>Vagas</p>
@@ -91,13 +94,13 @@
                     <p>Clientes</p>
                 </li>
             </a>
-            <a href="#">
+            <a href="{% url 'reservas' %}">
                 <li>
                     <span><i class="bi bi-card-checklist"></i></span>
                     <p>Reservas</p>
                 </li>
             </a>
-            <a href="#">
+            <a href="{% url 'vagas' %}">
                 <li>
                     <span><i class="bi bi-search"></i></span>
                     <p>Vagas</p>

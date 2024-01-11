@@ -1,0 +1,27 @@
+.vagas-fundo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2em;
+}
+
+.vagas-content{
+    margin-top: 1em;
+    width: 70%;
+    background-color: #fff;
+    border-top: 4px solid #075072;
+    display: flex;
+    justify-content: center;
+}
+
+.vagas-content table{
+    border-collapse: collapse;
+    text-align: center;
+    width: 95%;
+}
+
+.vagas-content table td, th{
+    padding: .5em 0;
+    border: 1px solid #cac9c9;
+}

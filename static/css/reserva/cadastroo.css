@@ -1,0 +1,33 @@
+select{
+    margin-bottom: 1.5em;
+    height: 35px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+select option{
+    font-size: 15px;
+}
+
+.tipo-reserva{
+    display: flex;
+    align-items: center;
+}
+
+.tipo-reserva input{
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+select:focus{
+    outline: none;
+}
+
+.reserva-add-content{
+    width: 100%;
+    margin-top: 2em;
+    margin-bottom: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

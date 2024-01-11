@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content  %}
+<div class="reservas-fundo">
+    <div class="reservas-actions">
+        <form action="">
+            <input type="text" placeholder="CPF do cliente...">
+            <button type="submit">pesquisar</button>
+        </form>
+        <a href="{% url 'cadastrar_reserva' %}">
+            <button class="btn-reservas-add"><i class="bi bi-plus"></i> Adcionar</button>
+        </a>
+    </div>
+    <div class="reservas-content">
+        {% if reservas %}
+        <table>
+            <tr>
+                <th>Cliente</th>
+                <th>Vaga</th>
+                <th>Entrada</th>
+                <th>Saída</th>
+                <th>Valor</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+            {% for reserva in reservas %}
+            <tr>
+                <td>{{reserva.cliente}}</td>
+                <td>{{reserva.vaga}}</td>
+                <td>{{reserva.horario_entrada}}</td>
+                {% if reserva.horario_saida is None %}
+                <td>-</td>
+                {% else %}
+                <td>{{reserva.horario_saida}}</td>
+                {% endif %}
+                <td>{{reserva.valor}}</td>
+                {% if reserva.status == 'em_andamento' %}
+                <td>em andamento</td>
+                {% elif reserva.status == 'finalizada' %}
+                <td>finalizada</td>
+                {% else %}
+                <td>-</td>
+                {% endif %}
+                <td class="reserva-actions">
+                    {% if reserva.status == 'em_andamento' %}
+                    <a class="btn-finalizar-reserva" href="{% url 'finalizar_reserva' reserva.id %}">Finalizar</a>
+                    <a href="{% url 'confirm_delete' reserva.id %}">
+                        <i class="bi bi-trash trash icons-reserva-actions reserva-delete"></i>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'confirm_delete' reserva.id %}">
+                        <i class="bi bi-trash trash icons-reserva-actions reserva-delete"></i>
+                    </a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h3>Não há reservas cadastradas!</h2>
+        {% endif %}
+    </div>
+</div>
+{% endblock  %}
