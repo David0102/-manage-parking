@@ -7,4 +7,5 @@ urlpatterns = [
     path('finalizar/<int:id>', views.finalizar_reserva, name='finalizar_reserva'),
     path('confirm_delete/<int:id>', views.confirm_delete, name='confirm_delete'),
     path('deletar/', views.deletar_reserva, name='deletar_reserva'),
+    path('busca/', views.busca_reserva, name='busca_reserva'),
 ]

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="cliente-add-content">
+    <div class="cliente-add-form">
+        <h1>Alterar senha</h1>
+        <form action="{% url 'change_password_post' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="id_user" value="{{id_user}}">
+            <input type="password" name="senha" placeholder="Digite a senha atual" required>
+            <input type="password" name="senha2" placeholder="Digite a nova senha" required>
+            <input type="password" name="senha3" placeholder="Confirmar senha" required>
+            <button type="submit">Alterar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

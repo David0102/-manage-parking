@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<h1>Faturamentos</h1>
+<p>{{faturamento_diario|floatformat:2}}</p>
+<p>{{faturamento_semanal|floatformat:2}}</p>
+{% endblock %}

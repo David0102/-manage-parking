@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'cliente',
     'reserva',
     'vaga',
+    'faturamento',
 ]
 
 MIDDLEWARE = [

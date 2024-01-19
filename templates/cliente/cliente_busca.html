@@ -4,7 +4,7 @@
 {% block content  %}
 <div class="reservas-fundo">
     <div class="reservas-actions">
-        <form action="{% url 'busca_cliente' %}" method="POST">
+        <form action="{% url 'busca_cliente' %}" method="POST" >
             {% csrf_token %}
             <input type="text" name="cpf" placeholder="CPF do cliente...">
             <button type="submit">pesquisar</button>
@@ -14,7 +14,6 @@
         </a>
     </div>
     <div class="reservas-content">
-        {% if clientes %}
         <table>
             <tr>
                 <th>Nome</th>
@@ -23,7 +22,6 @@
                 <th>Telefone</th>
                 <th>Ações</th>
             </tr>
-            {% for cliente in clientes %}
             <tr>
                 <td>{{cliente.nome}}</td>
                 <td>{{cliente.cpf}}</td>
@@ -34,11 +32,7 @@
                     <a class="clientes-delete-btn" href="{% url 'deletar_cliente' cliente.id %}"><i class="bi bi-trash trash"></i></a>
                 </td>
             </tr>
-            {% endfor %}
         </table>
-        {% else %}
-        <h3>Não há clientes cadastrados!</h2>
-        {% endif %}
     </div>
 </div>
 {% endblock  %}

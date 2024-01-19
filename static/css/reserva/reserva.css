@@ -102,16 +102,38 @@
 .actions-clientes{
     display: flex;
     justify-content: space-around;
-}
-
-.actions-clientes a{
-    font-size: 21px;
+    align-items: center;
 }
 
 .clientes-edit-btn{
     color: blue;
+    font-size: 21px;
+    transition: .3s;
 }
 
 .clientes-delete-btn{
     color: red;
+    font-size: 21px;
+    transition: .3s;
+}
+
+.clientes-edit-btn:hover{
+    color: black;
+}
+
+.clientes-delete-btn:hover{
+    color: black;
+}
+
+.alterar_senha{
+    color: white;
+    padding: .3em .5em;
+    background-color: #4f8eac;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+.alterar_senha:hover{
+    color: black;
+
 }

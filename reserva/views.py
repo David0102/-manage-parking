@@ -114,3 +114,14 @@ def deletar_reserva(request):
     reserva.delete()
     messages.success(request, 'Reserva excluída com sucesso!')
     return redirect('reservas')
+
+
+def busca_reserva(request):
+    cpf = request.POST.get('cpf')
+    reservas = Reserva.objects.filter(cliente__cpf=cpf).order_by('-horario_entrada')
+
+    if reservas:
+        return render(request, "reserva/buscar_reserva.html", {'reservas': reservas})
+    
+    messages.error(request, "Não existe reservas vinculadas ao cliente com CPF especificado!")
+    return redirect('reservas')

@@ -8,6 +8,8 @@ from cliente.models import Cliente
 from django.contrib.auth.models import User
 from vaga.models import Vaga
 from reserva.models import Reserva
+from datetime import datetime
+from django.db.models import Sum
 
 
 class CustomLoginView(LoginView):
@@ -31,9 +33,15 @@ def painel(request):
     total_reservas_em_andamento = len(reservas)
     total_funcionarios = len(funcionarios)
     total_clientes = len(clientes)
+
+    data_hoje = datetime.now().date()
+    reservas_diarias = Reserva.objects.filter(horario_entrada__date=data_hoje, 
+        horario_saida__date=data_hoje, status='finalizada')
+    faturamento_diario = reservas_diarias.aggregate(Sum('valor'))['valor__sum'] or 0
+
     return render(request, 'user/painel.html', {"total_clientes": total_clientes, 
     "total_funcionarios": total_funcionarios, "total_vagas":total_vagas_dispo, 
-    "total_reservas":total_reservas_em_andamento})
+    "total_reservas":total_reservas_em_andamento, "Faturamento_diario":faturamento_diario})
 
 class CustomLogoutView(LoginRequiredMixin, LogoutView):
     success_url = reverse_lazy('login')

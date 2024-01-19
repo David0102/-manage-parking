@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/messages/message.css' %}">
     <link rel="stylesheet" href="{% static 'css/user/paineel.css' %}">
     <link rel="stylesheet" href="{% static 'css/vaga/vagaa.css' %}">
-    <link rel="stylesheet" href="{% static 'css/reserva/reserv.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reserva/reserva.css' %}">
     <link rel="stylesheet" href="{% static 'css/reserva/cadastroo.css' %}">
     <link rel="stylesheet" href="{% static 'css/cliente/clientee.css' %}">
 </head>
@@ -47,7 +47,7 @@
                     <p>Clientes</p>
                 </li>
             </a>
-            <a href="#">
+            <a href="{% url 'faturamentos' %}">
                 <li>
                     <span><i class="bi bi-coin"></i></span>
                     <p>Faturamentos</p>

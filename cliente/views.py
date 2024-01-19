@@ -88,3 +88,15 @@ class ClienteDeleteView(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         messages.success(self.request, 'Cliente deletado com sucesso!')
         return super().get_success_url()
+
+
+def busca_cliente(request):
+    cpf = request.POST.get('cpf')
+
+    try:
+        cliente = Cliente.objects.get(cpf=cpf)
+        return render(request, 'cliente/cliente_busca.html', {'cliente':cliente})
+    
+    except Cliente.DoesNotExist:
+        messages.error(request, "Não existe um cliente com o CPF informado!")
+        return redirect('clientes')
