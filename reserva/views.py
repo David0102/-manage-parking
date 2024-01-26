@@ -69,6 +69,31 @@ def cadastrar_reserva(request):
             messages.success(request, 'Reserva cadastrada com sucesso!')
             return redirect('reservas')
 
+def editar_reserva_get(request, id):
+    reserva = Reserva.objects.get(id=id)
+    return render(request, 'reserva/editar_reserva.html', {'reserva': reserva})
+
+def editar_reserva_post(request):
+    reserva_id = request.POST.get('reserva_id')
+    entrada = request.POST.get('entrada')
+    saida = request.POST.get('saida')
+
+    reserva = Reserva.objects.get(id=reserva_id)
+    entrada_datetime = datetime.strptime(entrada, '%Y-%m-%dT%H:%M')
+
+    if saida:
+        saida_datetime = datetime.strptime(saida, '%Y-%m-%dT%H:%M')
+        reserva.horario_entrada = entrada_datetime
+        reserva.horario_saida = saida_datetime
+        reserva.save()
+        reserva.calcula_valor()
+        messages.success(request, 'Reserva editada com sucesso!')
+        return redirect('reservas')
+    
+    reserva.horario_entrada = entrada_datetime
+    messages.success(request, 'Reserva editada com sucesso!')
+    return redirect('reservas')
+
 @login_required
 def finalizar_reserva(request, id):
     reserva = Reserva.objects.get(id=id)

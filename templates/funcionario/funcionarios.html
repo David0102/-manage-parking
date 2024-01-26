@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content  %}
+{% block content %}
 <div class="reservas-fundo">
     <div class="reservas-actions">
         <form action="{% url 'busca_funcionario' %}" method="POST">
@@ -10,7 +10,7 @@
             <button type="submit">pesquisar</button>
         </form>
         <a href="{% url 'cadastrar_funcionario' %}">
-            <button class="btn-reservas-add"><i class="bi bi-plus"></i> Adcionar</button>
+            <button class="btn-reservas-add"><i class="bi bi-plus"></i> Adicionar</button>
         </a>
     </div>
     <div class="reservas-content">
@@ -18,7 +18,7 @@
         <table>
             <tr>
                 <th>Nome</th>
-                <th>Usuáro</th>
+                <th>Usuário</th>
                 <th>Email</th>
                 <th>Ações</th>
             </tr>
@@ -29,15 +29,17 @@
                 <td>{{funcionario.email}}</td>
                 <td class="actions-clientes">
                     <a class="alterar_senha" href="{% url 'change_password_get' funcionario.id %}">alterar senha</a>
-                    <a class="clientes-edit-btn" href="{% url 'editar_funcionario_get' funcionario.id %}"><i class="bi bi-pencil-square edit"></i></a>
-                    <a class="clientes-delete-btn" href="{% url 'deletar_funcionario' funcionario.id %}"><i class="bi bi-trash trash"></i></a>
+                    <a class="clientes-edit-btn" href="{% url 'editar_funcionario_get' funcionario.id %}"><i
+                            class="bi bi-pencil-square edit"></i></a>
+                    <a class="clientes-delete-btn" href="{% url 'deletar_funcionario' funcionario.id %}"><i
+                            class="bi bi-trash trash"></i></a>
                 </td>
             </tr>
             {% endfor %}
         </table>
         {% else %}
         <h3>Não há funcionários cadastrados!</h2>
-        {% endif %}
+            {% endif %}
     </div>
 </div>
-{% endblock  %}
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content  %}
+{% block content %}
 <div class="reservas-fundo">
     <div class="reservas-actions">
         <form action="{% url 'busca_reserva' %}" method="POST">
@@ -10,7 +10,7 @@
             <button type="submit">pesquisar</button>
         </form>
         <a href="{% url 'cadastrar_reserva' %}">
-            <button class="btn-reservas-add"><i class="bi bi-plus"></i> Adcionar</button>
+            <button class="btn-reservas-add"><i class="bi bi-plus"></i> Adicionar</button>
         </a>
     </div>
     <div class="reservas-content">
@@ -46,6 +46,9 @@
                 <td class="reserva-actions">
                     {% if reserva.status == 'em_andamento' %}
                     <a class="btn-finalizar-reserva" href="{% url 'finalizar_reserva' reserva.id %}">Finalizar</a>
+                    <a class="reserva-edit icons-reserva-actions" href="{% url 'editar_reserva_get' reserva.id %}">
+                        <i class="bi bi-pencil-square edit"></i>
+                    </a>
                     <a href="{% url 'confirm_delete' reserva.id %}">
                         <i class="bi bi-trash trash icons-reserva-actions reserva-delete"></i>
                     </a>
@@ -60,7 +63,7 @@
         </table>
         {% else %}
         <h3>Não há reservas cadastradas!</h2>
-        {% endif %}
+            {% endif %}
     </div>
 </div>
-{% endblock  %}
+{% endblock %}

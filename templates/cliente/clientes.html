@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content  %}
+{% block content %}
 <div class="reservas-fundo">
     <div class="reservas-actions">
         <form action="{% url 'busca_cliente' %}" method="POST">
@@ -10,7 +10,7 @@
             <button type="submit">pesquisar</button>
         </form>
         <a href="{% url 'cadastrar_cliente' %}">
-            <button class="btn-reservas-add"><i class="bi bi-plus"></i> Adcionar</button>
+            <button class="btn-reservas-add"><i class="bi bi-plus"></i> Adicionar</button>
         </a>
     </div>
     <div class="reservas-content">
@@ -30,15 +30,17 @@
                 <td>{{cliente.data_nascimento}}</td>
                 <td>{{cliente.telefone}}</td>
                 <td class="actions-clientes">
-                    <a class="clientes-edit-btn" href="{% url 'editar_cliente_get' cliente.id %}"><i class="bi bi-pencil-square edit"></i></a>
-                    <a class="clientes-delete-btn" href="{% url 'deletar_cliente' cliente.id %}"><i class="bi bi-trash trash"></i></a>
+                    <a class="clientes-edit-btn" href="{% url 'editar_cliente_get' cliente.id %}"><i
+                            class="bi bi-pencil-square edit"></i></a>
+                    <a class="clientes-delete-btn" href="{% url 'deletar_cliente' cliente.id %}"><i
+                            class="bi bi-trash trash"></i></a>
                 </td>
             </tr>
             {% endfor %}
         </table>
         {% else %}
         <h3>Não há clientes cadastrados!</h2>
-        {% endif %}
+            {% endif %}
     </div>
 </div>
-{% endblock  %}
+{% endblock %}

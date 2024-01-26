@@ -86,6 +86,11 @@
     color: rgb(228, 71, 71);
 }
 
+.reserva-edit{
+    margin-left: .3em;
+    color: blue;
+}
+
 .btn-finalizar-reserva{
     color: #fff;
     padding: .4em .5em;

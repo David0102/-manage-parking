@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="reserva-add-content">
+    <div class="cliente-add-form">
+        <h1>Editar Reserva</h1>
+        <form action="{% url 'editar_reserva_post' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="reserva_id" value="{{reserva.id}}">
+            <b>
+                <p style="margin-bottom: .5em; margin-top: .5em;">Horário de entrada:</p>
+            </b>
+            <input type="datetime-local" name="entrada" value="{{ reserva.horario_entrada|date:'Y-m-d\TH:i' }}"
+                required>
+            <b>
+                <p style="margin-bottom: .5em;">Horário de saída:</p>
+            </b>
+            <input type="datetime-local" name="saida" value="{{ reserva.horario_saida|date:'Y-m-d\TH:i' }}" required>
+            <button type="submit">Editar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

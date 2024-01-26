@@ -5,7 +5,7 @@
 <div class="reserva-add-content">
     <div class="cliente-add-form">
         <h1>Cadastrar Reserva</h1>
-        <form action="" method="POST">
+        <form action="{% url 'cadastrar_reserva' %}" method="POST">
             {% csrf_token %}
             <select name="cliente_id" required>
                 {% if clientes is None%}
@@ -27,9 +27,13 @@
                 {% endfor %}
                 {% endif %}
             </select>
-            <b><p style="margin-bottom: .5em; margin-top: .5em;">Horário de entrada:</p></b>
+            <b>
+                <p style="margin-bottom: .5em; margin-top: .5em;">Horário de entrada:</p>
+            </b>
             <input type="datetime-local" name="entrada" required>
-            <b><p style="margin-bottom: .5em;">Horário de saída:</p></b>
+            <b>
+                <p style="margin-bottom: .5em;">Horário de saída:</p>
+            </b>
             <input type="datetime-local" name="saida">
             <button type="submit">Cadastrar</button>
         </form>
