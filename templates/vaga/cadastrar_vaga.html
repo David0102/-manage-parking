@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="reserva-add-content">
+    <div class="cliente-add-form">
+        <h1>Cadastrar Vaga</h1>
+        <form action="{% url 'cadastrar_vaga' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="num_vaga" placeholder="Número da vaga...">
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

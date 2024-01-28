@@ -6,6 +6,13 @@
     margin-top: 2em;
 }
 
+.vagas-head{
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .vagas-content{
     margin-top: 1em;
     width: 70%;

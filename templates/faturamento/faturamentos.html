@@ -3,8 +3,22 @@
 {% load static %}
 
 {% block content %}
-<h1>Faturamentos</h1>
-<p>{{faturamento_diario|floatformat:2}}</p>
-<p>{{faturamento_semanal|floatformat:2}}</p>
-<p>{{faturamento_mensal|floatformat:2}}</p>
+<h1 class="faturamento-title">Faturamentos</h1>
+<div class="faturamentos-content">
+    <div class="faturamentos-card">
+        <h1>{{faturamento_diario|floatformat:2}}</h1>
+        <p>Faturamento do dia</p>
+        <i class="bi bi-coin"></i>
+    </div>
+    <div class="faturamentos-card">
+        <h1>{{faturamento_semanal|floatformat:2}}</h1>
+        <p>Faturamento da semana</p>
+        <i class="bi bi-coin"></i>
+    </div>
+    <div class="faturamentos-card">
+        <h1>{{faturamento_mensal|floatformat:2}}</h1>
+        <p>Faturamento do mês</p>
+        <i class="bi bi-coin"></i>
+    </div>
+</div>
 {% endblock %}
